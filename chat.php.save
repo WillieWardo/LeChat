@@ -1,3 +1,4 @@
+nano /var/www/html/le-chat/chat.php
 <?php
 /*
 * LE CHAT-PHP - a PHP Chat based on LE CHAT - Main program
@@ -31,21 +32,6 @@
 * 8 - Super-Admin
 * 9 - Private messages
 */
-// Database settings
-define('DBHOST', 'localhost');       // Host van je MySQL server
-define('DBUSER', 'chat_user');       // MySQL gebruiker
-define('DBPASS', 'strongpassword');  // Wachtwoord van chat_user
-define('DBNAME', 'le_chat');         // Database naam
-
-// Verbinden met database
-try {
-    $db = new PDO('mysql:host='.DBHOST.';dbname='.DBNAME.';charset=utf8', DBUSER, DBPASS);
-    $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    // Verbinding gelukt
-} catch (PDOException $e) {
-    die("Fatal error: No connection to database! " . $e->getMessage());
-}
-
 if (!extension_loaded('gettext')) {
 	prepare_stylesheets('fatal_error');
 	send_headers();
@@ -542,7 +528,7 @@ function print_end(): void
 }
 
 function credit() : string {
-	return '<small><br><br><a target="_blank" href="https://github.com/DanWin/le-chat-php" rel="noreferrer noopener"> </a></small>';
+	return '<small><br><br><a target="_blank" href="https://github.com/DanWin/le-chat-php" rel="noreferrer noopener">LE CHAT-PHP - ' . VERSION . '</a></small>';
 }
 
 function meta_html() : string {
